@@ -74,7 +74,20 @@ Router.put("/update/:id", (req, res, next) => {
   }
 });
 
+Router.delete("/delete/:id", (req, res, next) => {
+    try {
+      let id = req.params.id;
+      let sql = `DELETE FROM arts WHERE id=${id}`;
+      client.query(sql).then(() => {
+        res.status(204).end();
+      });
+    } catch (e) {
+      next(`Error while deleting  ${e} `);
+    }
+  });
+
 module.exports = Router;
 
-// view Card ('/card/:id')
-// get/post/delete/ update
+
+
+
