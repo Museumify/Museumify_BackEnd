@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const Router = express.Router();
 const axios = require('axios');
 const { API_URL } = require('../config');
@@ -52,10 +52,8 @@ Router.get('/:id', async (req, res, next) => {
     };
     res.send(object);
   } catch (e) {
-    next(`Search Route: ${e}`);
+    next(`Search by id Route: ${e}`);
   }
 });
 
-
 module.exports = Router;
-
