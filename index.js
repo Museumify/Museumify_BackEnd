@@ -31,8 +31,8 @@ app.use(internalServerError);
 
 client.connect().then(() => {
   try {
-    app.listen(3001, () => {
-      console.log("Listening at 3001");
+    app.listen(PORT, () => {
+      console.log(`Listening at ${PORT}`);
     });
   } catch (e) {
     next(`error at listening ${e}`);
