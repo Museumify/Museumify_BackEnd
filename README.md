@@ -17,7 +17,7 @@ PORT=3001
 
 To start the server, use the following command:
 
-``` npm start```
+```npm start```
 
 
 The server will start running on the specified port, and you should see a message indicating that the server is running.
