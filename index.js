@@ -20,8 +20,9 @@ app.use(express.json());
 
 // Routes
 //===============================
-app.use(generalRoutes);
 app.use(artRoutes); 
+app.use(generalRoutes);
+
 
 //==============================================
 // MiddleWares
