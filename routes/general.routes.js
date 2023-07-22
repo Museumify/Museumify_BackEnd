@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const Router = express.Router();
-const axios = require('axios');
-const { API_URL } = require('../config');
+const axios = require("axios");
+const { API_URL } = require("../config");
 
-Router.get('/', async (req, res, next) => {
+Router.get("/", async (req, res, next) => {
   try {
     var artRes;
     let artist = req.query.artists;
@@ -31,11 +31,11 @@ Router.get('/', async (req, res, next) => {
   }
 });
 
-Router.get('/favorite', (req, res, next) => {
-  res.send('Welcome to Favorite List');
+Router.get("/favorite", (req, res, next) => {
+  res.send("Welcome to Favorite List");
 });
 
-Router.get('/:id', async (req, res, next) => {
+Router.get("/:id", async (req, res, next) => {
   try {
     let id = req.params.id;
 

@@ -4,8 +4,35 @@ const client = require("../client");
 // const { Client } = require("pg");
 
 //**********************************************
-// post method (adding a new art piece by the user)
+Router.get('/getArt/:id', (req, res, next) => {
+  try {
+    let id = req.params.id;
+    let sql = `SELECT * FROM arts WHERE id=${id};`;
+    client.query(sql).then((data) => {
+      res.status(200).send(data.rows);
+    });
+  } catch (error) {
+    next(`An error occurred while get the required art: ${error}`);
+  }
+});
 
+
+
+
+
+Router.get("/allArts", (req, res, next) => {
+  try {
+    let sql = `SELECT * FROM arts `;
+    client.query(sql).then((data) => {
+      res.status(200).json(data.rows);
+    });
+  } catch (e) {
+    next(`Error while getting data from database  ${e} `);
+  }
+});
+
+/////////////////////////////////////////
+// post method (adding a new art piece by the user)
 Router.post("/addNewArt", (req, res, next) => {
   try {
     let title = req.body.title;
@@ -25,9 +52,8 @@ Router.post("/addNewArt", (req, res, next) => {
     next(`Error while adding a new art piece ${e} `);
   }
 
-  
-  //////////////////////////////////////////////////
-
+ 
+/************************************** */
   Router.put("/update/:id", (req, res, next) => {
     try {
       let id = req.params.id;
@@ -38,6 +64,18 @@ Router.post("/addNewArt", (req, res, next) => {
       });
     } catch (e) {
       next(`Error while updating a comment  ${e} `);
+    }
+  });
+
+  Router.delete("/delete/:id", (req, res, next) => {
+    try {
+      let id = req.params.id;
+      let sql = `DELETE FROM arts WHERE id=${id}`;
+      client.query(sql).then(() => {
+        res.status(204).end();
+      });
+    } catch (e) {
+      next(`Error while deleting  ${e} `);
     }
   });
 
