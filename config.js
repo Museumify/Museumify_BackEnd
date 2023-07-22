@@ -1,4 +1,5 @@
 module.exports = {
   PORT: process.env.PORT,
-  API_URL: process.env.API_URL ,
+  API_URL: `https://api.artic.edu/api/v1/artworks` ,
+  
 };
