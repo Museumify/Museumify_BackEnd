@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const Router = express.Router();
 const axios = require('axios');
 const { API_URL } = require('../config');
@@ -53,3 +53,4 @@ Router.get('/:id', async (req, res, next) => {
 });
 
 module.exports = Router;
+
