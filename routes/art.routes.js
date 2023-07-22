@@ -4,7 +4,7 @@ const client = require("../client");
 // const { Client } = require("pg");
 
 //**********************************************
-Router.get('/getArt/:id', (req, res, next) => {
+Router.get("/getArt/:id", (req, res, next) => {
   try {
     let id = req.params.id;
     let sql = `SELECT * FROM arts WHERE id=${id};`;
@@ -15,10 +15,6 @@ Router.get('/getArt/:id', (req, res, next) => {
     next(`An error occurred while get the required art: ${error}`);
   }
 });
-
-
-
-
 
 Router.get("/allArts", (req, res, next) => {
   try {
@@ -52,22 +48,33 @@ Router.post("/addNewArt", (req, res, next) => {
     next(`Error while adding a new art piece ${e} `);
   }
 
- 
-/************************************** */
-  Router.put("/update/:id", (req, res, next) => {
-    try {
-      let id = req.params.id;
-      let comment = req.body.comment;
-      let sql = `UPDATE arts SET comment=$1 WHERE id= ${id}`;
-      client.query(sql, [comment]).then(() => {
-        res.status(200).json("updated");
-      });
-    } catch (e) {
-      next(`Error while updating a comment  ${e} `);
-    }
-  });
+  //   {"title":"",
+  //   "artist" :"",
+  //   "image" :"",
+  //   "description":"",
+  //   "place":""}
 
-  Router.delete("/delete/:id", (req, res, next) => {
+  //   {"title":"",
+  //   "artist" :"",
+  //   "image" :"",
+  //   "description":"",
+  //   "place":""}
+});
+
+Router.put("/update/:id", (req, res, next) => {
+  try {
+    let id = req.params.id;
+    let comment = req.body.comment;
+    let sql = `UPDATE arts SET comment=$1 WHERE id= ${id}`;
+    client.query(sql, [comment]).then(() => {
+      res.status(200).json("updated");
+    });
+  } catch (e) {
+    next(`Error while updating a comment  ${e} `);
+  }
+});
+
+Router.delete("/delete/:id", (req, res, next) => {
     try {
       let id = req.params.id;
       let sql = `DELETE FROM arts WHERE id=${id}`;
@@ -79,13 +86,8 @@ Router.post("/addNewArt", (req, res, next) => {
     }
   });
 
-  //   {"title":"",
-  //   "artist" :"",
-  //   "image" :"",
-  //   "description":"",
-  //   "place":""}
-});
 module.exports = Router;
 
-// view Card ('/card/:id')
-// get/post/delete/ update
+
+
+
