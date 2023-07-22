@@ -31,6 +31,10 @@ Router.get('/', async (req, res, next) => {
   }
 });
 
+Router.get('/favorite', (req, res, next) => {
+  res.send('Welcome to Favorite List');
+});
+
 Router.get('/:id', async (req, res, next) => {
   try {
     let id = req.params.id;
@@ -51,5 +55,7 @@ Router.get('/:id', async (req, res, next) => {
     next(`Search Route: ${e}`);
   }
 });
+
+
 
 module.exports = Router;
