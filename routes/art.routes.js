@@ -29,9 +29,22 @@ Router.post("/addNewArt", (req, res, next) => {
 //   "description":"",
 //   "place":""}
 
-
-
 });
+
+
+Router.put("/update/:id", (req, res, next) => {
+    try {
+      let id = req.params.id;
+      let comment = req.body.comment;
+      let sql = `UPDATE arts SET comment=$1 WHERE id= ${id}`;
+      client.query(sql, [comment]).then(() => {
+        res.status(200).json("updated");
+      });
+    } catch (e) {
+      next(`Error while updating a comment  ${e} `);
+    }
+  });
+
 module.exports = Router;
 
 // view Card ('/card/:id')
