@@ -37,10 +37,12 @@ Router.post("/addNewArt", (req, res, next) => {
     let description = req.body.description;
     let place = req.body.place;
     let comment = req.body.comment;
+    let userid=req.body.userid;
 
-    let sql = `insert into arts(title,artist,image,description,place,comment) values ($1,$2,$3,$4,$5,$6)`;
+
+    let sql = `insert into arts(title,artist,image,description,place,comment,userid) values ($1,$2,$3,$4,$5,$6,$7)`;
     client
-      .query(sql, [title, artist, image, description, place, comment])
+      .query(sql, [title, artist, image, description, place, comment, userid])
       .then(() => {
         res.status(201).send(`Art ${title} added to database`);
       });
