@@ -8,13 +8,14 @@ Router.get("/", async (req, res, next) => {
     var artRes;
     let artist = req.query.artists;
     let place = req.query.culture;
+    let limit=100;
     if (artist == null && place == null) {
-      artRes = await axios.get(`${API_URL}`);
+      artRes = await axios.get(`${API_URL}?limit=${limit}`);
     } else if (artist != null) {
-      artRes = await axios.get(`${API_URL}/?artists=${artist}
+      artRes = await axios.get(`${API_URL}/?artists=${artist}&limit=${limit}
     `);
     } else if (place != null) {
-      artRes = await axios.get(`${API_URL}/?culture=${place}
+      artRes = await axios.get(`${API_URL}/?culture=${place}&limit=${limit}
     `);
     }
     let artArray = artRes.data.data.map((art) => ({
