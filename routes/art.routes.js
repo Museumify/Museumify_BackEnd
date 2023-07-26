@@ -44,7 +44,7 @@ Router.post("/addNewArt", (req, res, next) => {
     client
       .query(sql, [title, artist, image, description, place, comment, userid])
       .then(() => {
-        res.status(201).send(`Art ${title} added to database`);
+        res.status(201).json(`Art ${title} added to database`);
       });
   } catch (e) {
     next(`Error while adding a new art piece ${e} `);
