@@ -8,7 +8,7 @@ Router.get("/", async (req, res, next) => {
     var artRes;
     let artist = req.query.artists;
     let place = req.query.culture;
-    let limit=104;
+    let limit=105;
     if (artist == null && place == null) {
       artRes = await axios.get(`${API_URL}?limit=${limit}`);
     } else if (artist != null) {
